@@ -1,0 +1,19 @@
+X, Y, N, D = map(int, input().split())
+
+garden = [[1] * X for _ in range(Y)]
+
+for _ in range(N):
+    x1, x2, y1, y2 = map(int, input().split())
+    for i in range(y1, y2):
+        for j in range(x1, x2):
+            garden[i][j] = 0
+
+for _ in range(D):
+    veggie_x, veggie_y = map(int, input().split())
+    valid_spots = 0
+    for i in range(Y - veggie_y + 1):
+        for j in range(X - veggie_x + 1):
+
+            if all(garden[i + k][j + l] for k in range(veggie_y) for l in range(veggie_x)):
+                valid_spots += 1
+    print(valid_spots)
